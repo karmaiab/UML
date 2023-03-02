@@ -1,0 +1,277 @@
+@startuml
+Client -> Server: Authentication Request
+Server --> Client: Authentication Response
+
+Client -> Server: Another Authentication Request
+Server <-- Client: Another Authentication Response
+@enduml
+
+@startuml
+participant Participant as Foo
+actor Actor as Foo1
+boundary Boundary as Foo2
+control Control as Foo3
+entity Entity as Foo4
+database Database as Foo5
+collections Collections as Foo6
+queue Queue as Foo7
+
+Foo -> Foo1 : to actor
+Foo -> Foo2 : to boundary
+Foo -> Foo3 : to control
+Foo -> Foo4 : to entity
+Foo -> Foo5 : to database
+Foo -> Foo6 : to collections
+Foo -> Foo7 : to queue
+@enduml
+
+@startuml
+actor Alice #Pink
+participant Bob
+participant "У меня длинное имя" as L #99FF99
+
+Bob -> Alice: Authentication Request
+Alice -> Bob: Authentication response
+Alice ->Bob: Log transaction
+@enduml
+
+@startuml
+participant Last order 30
+participant Middle order 20
+participant First order 10
+@enduml
+
+
+@startuml
+Alice -> Alice: Это сигнал к самому себе .\nТакже это является демонстрацией\nмногострочного \nтекста.
+@enduml
+
+
+
+
+@startuml
+skinparam sequenceMessageAlign right
+Bob -> Alice : Request
+Alice -> Bob : Response
+@enduml
+
+
+@startuml
+skinparam ResponseMessageBelowArrow true
+Bob -> Alice : дай пять евро
+Alice -> Bob : нет, не дам
+@enduml
+
+
+
+@startuml
+Bob ->x Alice
+Bob -> Alice
+Bob ->> Alice
+Bob -\ Alice
+Bob \\- Alice
+Bob //-- Alice
+
+Bob ->o Alice
+Bob <-> Alice
+Bob <->o Alice
+@enduml
+
+
+@startuml
+Bob -[#red]> Alice : hello 
+Alice -[#0000FF]->Bob : idi nahu
+@enduml
+
+
+@startuml
+autonumber 1.1.1
+Alice -> Bob: Authentication request
+Bob --> Alice: Response
+
+autonumber inc A 
+
+Alice -> Bob: Another authentication request
+Bob --> Alice: Response
+
+autonumber inc B 
+
+Alice -> Bob: Another authentication request
+Bob --> Alice : Response
+
+autonumber inc A 
+
+Alice -> Bob: Another authentication request
+autonumber inc B 
+
+Bob --> Alice: Response
+@enduml
+
+
+@startuml
+
+Alice -> Bob : message 1
+Alice -> Bob : message 2
+
+newpage
+
+Alice -> Bob : message 3
+Alice -> Bob : message 4
+
+newpage A titile for the\nlast page
+
+Alice -> Bob : message 5
+Alice -> Bob : message 6
+@enduml
+
+
+
+@startuml
+Alice -> Bob: Authentication Request
+
+alt successful case 
+
+    Bob -> Alice: Authentication Accepted
+
+else some kind of failure
+
+   Bob -> Alice: Authentication Failure
+   group My own label
+   Alice -> Log : Log attack start
+       loop 1000 times 
+         Alice -> Bob: DNS Attack
+    end
+
+else Another type of failure
+
+   Bob -> Alice : Please repeat
+
+end
+@enduml
+
+
+
+@startuml
+Alice->Bob : привет
+note left: это первая заметка
+
+Bob->Alice: ага
+note right: это другая заметка
+
+Bob->Bob: я размышляю над этим
+note left
+заметки
+могут занимать
+несколько строчек
+end note
+@enduml
+
+
+
+
+@startuml
+participant Alice
+participant Bob
+note left of Alice #Aqua
+Будет отображено
+слева от Алисы
+end note
+
+note right of Alice: Будет отображено справа от Алисы
+
+note over Alice: Будет отображено над Алисой.
+
+note over Alice, Bob #FFAAAA: Будет отображено \n над Алисой и Бобом.
+
+note over Bob, Alice
+А это еще
+один пример
+длинной заметки.
+end note
+@enduml
+
+
+
+
+@startuml
+
+== Initialization ==
+
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+== Repetition ==
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob : another authentication Response
+
+@enduml
+
+
+@startuml
+Bob -> Alice: привет
+activate Alice
+Alice -> Alice: какое-то действие
+return пока
+@enduml
+
+
+
+@startuml
+
+title __Simple__ communication example\non several lines 
+
+Alice -> Bob: Authentication Request
+Bob -> Alice: Authentication Response
+
+@enduml
+
+
+
+@startuml
+
+box "Internal Service" #LightBlue
+participant Bob
+participant Alice
+end box
+participant Other
+
+Bob -> Alice : hello
+Alice -> Other : hello
+
+@enduml
+
+
+
+
+@startuml
+Alice -> Bob: Запрос авторизации
+alt#Gold #LightBlue Успешный кейс
+    Bob -> Alice: Запрос удовлетворен
+else #Pink Ошибка
+    Bob -> Alice: Запрос отклонен
+end
+@enduml
+
+@startuml
+
+actor Alice as A1
+database ShoeShop as A2
+control Payment as A3
+participant Delivery as A4
+
+
+A1 -> A2 : Find Nike Airmax
+A2 --> A1 : Nike AirMax Finded!
+A1 -> A2 : I want to buy it *нажал чтобы оплатить*
+A2 -> A3 : *деньги заказчика идут через оплату*
+alt #LightBlue Оплата прошла
+    A3 -> A4: Оплата прошла
+else #Pink Оплата не прошла
+    A3 -> A1: Оплата не прошла
+end
+A4 ->o A1 
+
+
+
+@enduml
